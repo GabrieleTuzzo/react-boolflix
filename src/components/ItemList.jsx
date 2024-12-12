@@ -1,13 +1,16 @@
 import Card from './Card/Card';
 
 export default function ItemList({ array }) {
+    if (!array) return <p>Search Something!</p>;
+
     return (
         <ul>
-            {array ? (
+            {array.results.length != 0 ? (
                 array.results.map((item, i) => {
                     return (
                         <li key={i}>
                             <Card
+                                posterPath={item.poster_path}
                                 title={item.title || item.name}
                                 ogTitle={
                                     item.original_title || item.original_name
