@@ -8,10 +8,10 @@ import HomePage from './pages/HomePage';
 import DefaultLayout from './layouts/DefaultLayout';
 // Contexts
 import GlobalContext from './contexts/GlobalContext';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function App() {
-    const [movies, setMovies] = useState();
+    const [movies, setMovies] = useState(null);
     const [searchQuery, setSearchQuery] = useState('');
 
     function search() {
@@ -24,6 +24,7 @@ function App() {
             })
             .then((response) => {
                 console.log(response);
+                setMovies(response.data);
             })
             .catch((error) => {
                 console.error(error);
@@ -31,11 +32,13 @@ function App() {
     }
 
     return (
-        <GlobalContext.Provider value={{ searchQuery, setSearchQuery, search }}>
+        <GlobalContext.Provider
+            value={{ searchQuery, setSearchQuery, search, movies }}
+        >
             <BrowserRouter>
                 <Routes>
-                    <Route Component={DefaultLayout}>
-                        <Route index Component={HomePage}></Route>
+                    <Route element={<DefaultLayout />}>
+                        <Route index element={<HomePage />}></Route>
                     </Route>
                 </Routes>
             </BrowserRouter>

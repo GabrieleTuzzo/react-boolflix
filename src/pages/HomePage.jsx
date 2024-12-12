@@ -1,7 +1,10 @@
+import MoviesList from '../components/MoviesList';
+
 export default function HomePage() {
     return (
         <main>
-            <h1>Hello World</h1>
+            <h1>Movies</h1>
+            <MoviesList></MoviesList>
         </main>
     );
 }
