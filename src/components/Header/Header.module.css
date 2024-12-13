@@ -15,6 +15,10 @@
     height: 54px;
 }
 
+.LogoWrapper {
+    flex-shrink: 0;
+}
+
 .search_form {
     display: flex;
     justify-content: center;

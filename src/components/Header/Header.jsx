@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import { BASIC_URI, API_KEY } from '../../config/URL';
 import GlobalContext from '../../contexts/GlobalContext';
 import style from './Header.module.css';
@@ -51,12 +52,14 @@ export default function Header() {
     };
     return (
         <header className={style.HeaderMain}>
-            <div>
-                <img
-                    className={style.HeaderLogo}
-                    src="/logos/logo.png"
-                    alt=""
-                />
+            <div className={style.LogoWrapper}>
+                <Link to={'/'}>
+                    <img
+                        className={style.HeaderLogo}
+                        src="/logos/logo.png"
+                        alt=""
+                    />
+                </Link>
             </div>
             <form className={style.search_form} onSubmit={handleSubmit}>
                 <input
