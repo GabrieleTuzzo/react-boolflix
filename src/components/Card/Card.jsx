@@ -1,6 +1,14 @@
 import { IMG_URI } from '../../config/URL';
+import style from './Card.module.css';
 
-export default function Card({ title, ogTitle, lang, vote, posterPath }) {
+export default function Card({
+    title,
+    ogTitle,
+    lang,
+    vote,
+    posterPath,
+    overview,
+}) {
     // let src = null;
     let fullStarsNumber = Math.ceil(vote / 2);
     const starsArray = Array.from({ length: 5 });
@@ -30,31 +38,42 @@ export default function Card({ title, ogTitle, lang, vote, posterPath }) {
     };
 
     return (
-        <div>
-            <img
-                src={IMG_URI + '/w342' + posterPath}
-                alt={`${title} poster`}
-            ></img>
-            <h3>{title}</h3>
-            <h4>{ogTitle}</h4>
-            {flagLookup[lang] ? (
+        <div className={style.CardWrapper}>
+            <div className={style.CardContent}>
                 <img
-                    src={flagLookup[lang]}
-                    alt={`${lang} flag`}
-                    width="30px"
+                    src={
+                        posterPath
+                            ? IMG_URI + 'w342' + posterPath
+                            : '/placeholder.png'
+                    }
+                    alt={`${title} poster`}
                 ></img>
-            ) : (
-                <p>{lang}</p>
-            )}
-            <p>
-                {starsArray.map((_, i) =>
-                    i < fullStarsNumber ? (
-                        <i key={i} className="fa-solid fa-star"></i>
+                <div className={style.Card_Overlay}>
+                    <h3>{title}</h3>
+                    <h4>{ogTitle}</h4>
+                    {flagLookup[lang] ? (
+                        <img
+                            className={style.flag_image}
+                            src={flagLookup[lang]}
+                            alt={`${lang} flag`}
+                        ></img>
                     ) : (
-                        <i key={i} className="fa-regular fa-star"></i>
-                    )
-                )}
-            </p>
+                        <p>Original Language: {lang.toUpperCase()}</p>
+                    )}
+                    {overview && (
+                        <p className={style.Card_Overview}>{overview}</p>
+                    )}
+                    <p className={style.StarsVote}>
+                        {starsArray.map((_, i) =>
+                            i < fullStarsNumber ? (
+                                <i key={i} className="fa-solid fa-star"></i>
+                            ) : (
+                                <i key={i} className="fa-regular fa-star"></i>
+                            )
+                        )}
+                    </p>
+                </div>
+            </div>
         </div>
     );
 }

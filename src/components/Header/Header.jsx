@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import axios from 'axios';
 import { BASIC_URI, API_KEY } from '../../config/URL';
 import GlobalContext from '../../contexts/GlobalContext';
+import style from './Header.module.css';
 
 export default function Header() {
     const { searchQuery, setSearchQuery, setMovies, setTv } =
@@ -49,14 +50,27 @@ export default function Header() {
         search();
     };
     return (
-        <header>
-            <form onSubmit={handleSubmit}>
+        <header className={style.HeaderMain}>
+            <div>
+                <img
+                    className={style.HeaderLogo}
+                    src="/logos/logo.png"
+                    alt=""
+                />
+            </div>
+            <form className={style.search_form} onSubmit={handleSubmit}>
                 <input
+                    placeholder="Type here..."
+                    className={style.search_input}
                     type="text"
                     onChange={handleChange}
                     value={searchQuery}
                 />
-                <input type="submit" value="Search" />
+                <input
+                    className={style.search_button}
+                    type="submit"
+                    value="Search"
+                />
             </form>
         </header>
     );

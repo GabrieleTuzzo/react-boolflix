@@ -3,3 +3,44 @@
     margin: 0;
     box-sizing: border-box;
 }
+
+ul,
+ol {
+    list-style-type: none;
+}
+
+body {
+    background-color: #181c25;
+    color: white;
+}
+
+img {
+    width: 100%;
+    display: block;
+}
+
+.container {
+    max-width: 1440px;
+    margin: 1.8rem auto;
+}
+
+.sectionTitle {
+    font-size: 2rem;
+    color: #d20f1c;
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.col-3 {
+    width: calc(3 * 100% / 12);
+}

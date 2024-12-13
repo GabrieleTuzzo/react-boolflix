@@ -1,0 +1,55 @@
+.HeaderMain {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem;
+    background-color: #202531;
+}
+
+.HeaderTitle {
+    color: #f02d3a;
+}
+
+.HeaderLogo {
+    width: 100%;
+    height: 54px;
+}
+
+.search_form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    max-width: 500px;
+    background: #292e3d;
+}
+
+.search_input {
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s;
+}
+
+.search_input:focus {
+    border-color: #ac0c17;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.search_button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #f02d3a;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.search_button:hover {
+    background-color: #ac0c17;
+}
